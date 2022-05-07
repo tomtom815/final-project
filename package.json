@@ -2,7 +2,7 @@
   "name": "thomas-henry-final",
   "version": "1.0.0",
   "description": "Rest API for backend dev final",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon index.js"
   },
