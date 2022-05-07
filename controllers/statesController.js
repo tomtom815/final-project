@@ -6,9 +6,33 @@ const Funfact = require('../models/Funfacts');
 
 
 
-const getAllStates = (req, res) => {
-    res.json(data.states);
-}
+const getAllStates = async (req, res) => {
+    if(req.query.contig ===  "false"){
+        const state1 = data.states.find(state => state.code === "HI" );
+        const state2 = data.states.find(state => state.code === "AK" );
+        const funfact1 = await Funfact.findOne({ stateCode: "HI" }).exec();
+        const funfact2 = await Funfact.findOne({ stateCode: "AK" }).exec();
+        const factAlone1 = {"funfact":[]};
+        const factAlone2 = {"funfact": []};
+        const stateFact1 = {...state1, ...factAlone1};
+        const stateFact2 = {...state2, ...factAlone2};
+        var allCombined = [];
+        allCombined.push(stateFact1);
+        allCombined.push(stateFact2);
+        res.json(allCombined);
+    }else if(req.query.contig === "true"){
+        const allStates = data.states;
+        const contigStates = [];
+        for(let i = 0; i < allStates.length; i++){
+            if(allStates[i].code === "HI" || allStates[i].code === "AK"){
+                
+            }else{contigStates.push(allStates[i])}
+        }
+        res.json(contigStates);
+    }else{res.json(data.states)}
+        
+
+};
 const getFunFacts = async (req, res) => {
     if (!req?.params?.state) return res.status(400).json({ 'message': 'State Code required.' });
     const funfact = await Funfact.findOne({ stateCode: req.params.state.toUpperCase() }).exec();
@@ -70,7 +94,7 @@ const updateFunFact = async (req, res) => {
 };
 
 
-const getContigStates = async (req, res) => {
+const getNonContigStates = async (req, res) => {
     const state1 = data.states.find(state => state.code === "HI" );
     const state2 = data.states.find(state => state.code === "AK" );
     const funfact1 = await Funfact.findOne({ stateCode: "HI" }).exec();
@@ -184,7 +208,7 @@ module.exports = {
     getAllStates,
     getFunFacts,
     getOneState,
-    getContigStates,
+    getNonContigStates,
     getCapital,
     getNickname,
     getPopulation,

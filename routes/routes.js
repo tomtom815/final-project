@@ -10,8 +10,7 @@ const statesController = require('../controllers/statesController');
 
 module.exports = router;
 
-router.route('/states/?contig=false')
-    .get(statesController.getContigStates);
+
 
 router.route('/states')
     .get(statesController.getAllStates)
