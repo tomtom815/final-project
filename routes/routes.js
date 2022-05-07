@@ -18,19 +18,11 @@ module.exports = router;
 router.get('/states',cors(), statesController.getAllStates);
 router.get('/states/:state', cors(), statesController.getOneState);
 router.get('/states/:state/capital', cors(), statesController.getCapital);
-
-router.route('/states/:state/nickname')
-    .get(statesController.getNickname);
-
-router.route('/states/:state/population')
-    .get(statesController.getPopulation);
-
-router.route('/states/:state/admission')
-    .get(statesController.getAdmission);
-
-
-router.route('/states/:state/funfact')
-    .get(statesController.getFunFacts)
+router.get('/states/:state/nickname', cors(), statesController.getNickname);
+router.get('/states/:state/population', cors(), statesController.getPopulation);
+router.get('/states/:state/admission', cors(), statesController.getAdmission);
+router.get('/states/:state/funfact', cors(), statesController.getFunFacts);
+    
 router.route('/states/:state/funfact')
     
     .post(statesController.postFunFacts)
