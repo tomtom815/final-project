@@ -15,43 +15,34 @@ module.exports = router;
 
 
 
-router.route('/states')
-    .get(cors(),statesController.getAllStates)
-    
-//Working
-
-    
-
-router.route('/states/:state')
-    .get(cors(),statesController.getOneState)
-
-router.route('/states/:state/capital')
-    .get(cors(),statesController.getCapital);
+router.get('/states',cors(), statesController.getAllStates);
+router.get('/states/:state', cors(), statesController.getOneState);
+router.get('/states/:state/capital', cors(), statesController.getCapital);
 
 router.route('/states/:state/nickname')
-    .get(cors(),statesController.getNickname);
+    .get(statesController.getNickname);
 
 router.route('/states/:state/population')
-    .get(cors(),statesController.getPopulation);
+    .get(statesController.getPopulation);
 
 router.route('/states/:state/admission')
-    .get(cors(),statesController.getAdmission);
+    .get(statesController.getAdmission);
 
 
 router.route('/states/:state/funfact')
-    .get(cors(),statesController.getFunFacts)
+    .get(statesController.getFunFacts)
 router.route('/states/:state/funfact')
     
-    .post(cors(),statesController.postFunFacts)
-    .patch(cors(),statesController.updateFunFact);
+    .post(statesController.postFunFacts)
+    .patch(statesController.updateFunFact);
 
 
 //Update Funfact Method
-router.patch('/states/:state/funfact', cors(),(req, res) => {
+router.patch('/states/:state/funfact', (req, res) => {
     res.send('Update by ID API')
 })
 
 //Delete Funfact Method
-router.delete('/states/:state/funfact',cors(), (req, res) => {
+router.delete('/states/:state/funfact', (req, res) => {
     res.send('Delete by ID API')
 })
