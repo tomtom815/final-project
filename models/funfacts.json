@@ -1,0 +1,22 @@
+[
+    {
+        "stateCode": "CO",
+        "funFact": ["State tree is Colorado Blue Spruce", "Flower is Rocky Mountain Columbine", "Highest point is Mt. Elbert"]
+    },
+    {
+        "stateCode": "OK",
+        "funFact": ["State tree is Eastern Redbud", "State flower is Mistletoe", "State flag honors more than 60 groups of Native Americans"]
+    },
+    {
+        "stateCode": "KS",
+        "funFact": ["State tree is Eastern Cottonwood", "State flower is the sunflower", "State motto is 'To the stars through difficulties'"]
+    },
+    {
+        "stateCode": "MO",
+        "funFact": ["State motto is 'The welfare of the people shall be the supreme law", "State tree is flowering dogwood", "State song is the Missouri waltz"]
+    },
+    {
+        "stateCode": "NE",
+        "funFact": ["Name based on Otoe word meaning 'flat water'", "State song is 'Beautiful Nebraska'", "Highest point is Panorama Point"]
+    }
+]
