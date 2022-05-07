@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const router = express.Router()
 const State = {
     states: require('../models/states.json'),
@@ -6,7 +7,7 @@ const State = {
 }
 const Funfact = require('../models/Funfacts');
 const statesController = require('../controllers/statesController');
-
+app.use(cors());
 
 module.exports = router;
 
