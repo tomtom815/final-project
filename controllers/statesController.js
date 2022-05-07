@@ -6,6 +6,7 @@ const Funfact = require('../models/Funfacts');
 
 
 
+
 const getAllStates = async (req, res) => {
     if(req.query.contig ===  "false"){
         const state1 = data.states.find(state => state.code === "HI" );

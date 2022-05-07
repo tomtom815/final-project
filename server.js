@@ -21,6 +21,7 @@ app.use(express.json());
 app.use('/', express.static(path.join(__dirname, '/public')));
 
 // routes
+app.options('*', cors())
 app.use('/', require('./routes/root'));
 app.use('/states', require('./routes/routes'));
 
@@ -35,6 +36,6 @@ app.all('*', (req, res) => {
     }
 });
 
-app.use(errorHandler);
+
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
