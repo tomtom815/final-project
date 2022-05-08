@@ -50,7 +50,7 @@ const getOneState = async (req, res) => {
     
         
     if (!state) {
-        return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
+        return res.status(400).json({ "message": 'Invalid state abbreviation parameter' });
     }
     if(funfact != null){
         const factAlone = {"funfacts": funfact.funFact};
