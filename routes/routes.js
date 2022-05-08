@@ -38,13 +38,3 @@ router.patch('/states/:state/funfact', (req, res) => {
 router.delete('/states/:state/funfact', (req, res) => {
     res.send('Delete by ID API')
 })
-router.all('/*',cors(), (req, res) => {
-    res.status(404);
-    if (req.accepts('html')) {
-        res.sendFile(path.join('../views', '404.html'));
-    } else if (req.accepts('json')) {
-        res.json({ "error": "404 Not Found" });
-    } else {
-        res.type('txt').send("404 Not Found");
-    }
-});
