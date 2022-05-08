@@ -38,7 +38,7 @@ const getFunFacts = async (req, res) => {
     if (!req?.params?.state) return res.status(400).json({ 'message': 'State Code required.' });
     const funfact = await Funfact.findOne({ stateCode: req.params.state.toUpperCase() }).exec();
     if (!funfact) {
-        return res.status(204).json({ "message": `No funfact found for state ${req.params.state.toUpperCase()}.` });
+        return res.status(204).json({ "funfact": `No funfact found for state ${req.params.state.toUpperCase()}.` });
     }
     const randomFactAlone = funfact.funFact;
     res.json({"message": funfact.funFact[Math.floor(Math.random() * 3)]});
