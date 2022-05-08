@@ -179,7 +179,7 @@ const getAdmission = (req, res) => {
         res.json({"message": 'Invalid state abbreviation parameter'});
     }else{
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
-    const population = {'state': state.state, 'admitted': state.admission_date};
+    const population = {'state': state.state, 'admission': state.admission_date};
     if (!state) {
         return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
     }
