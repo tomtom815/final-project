@@ -49,9 +49,6 @@ const getAllStates = async (req, res) => {
 
 };
 const getFunFacts = async (req, res) => { 
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
         if (!req?.params?.state) return res.status(400).json({ 'message': 'State Code required.' });
         const funfact = await Funfact.findOne({ stateCode: req.params.state.toUpperCase() }).exec();
         if (!funfact) {
@@ -59,13 +56,11 @@ const getFunFacts = async (req, res) => {
         }
         const randomFactAlone = funfact.funFact;
         res.json({"funfact": funfact.funFact[Math.floor(Math.random() * 3)]});
-}
+
 };
 
 const getOneState = async (req, res) => {
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
+    
     
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
     const funfact = await Funfact.findOne({ stateCode: req.params.state.toUpperCase() }).exec();
@@ -82,11 +77,7 @@ const getOneState = async (req, res) => {
             console.log(verifyStates(req.params.state));
             res.json(state);
         }
-    
-
-
-    
-}};
+    };
 
 const postFunFacts = async (req, res) => {
     const fact = new Funfact({
@@ -137,54 +128,46 @@ const getNonContigStates = async (req, res) => {
 };
 
 const getCapital =  (req, res) => {
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
+    
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
     const capital = {'state': state.state, 'capital': state.capital_city};
     if (!state) {
         return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
     }
     res.json(capital);
-}
+
 };
 
 const getNickname =  (req, res) => {
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
+    
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
     const nickName = {'state': state.state, 'nickname': state.nickname};
     if (!state) {
         return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
     }
     res.json(nickName);
-}
+
 };
 
 const getPopulation = (req, res) => {
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
+    
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
     const population = {'state': state.state, 'population': state.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")};
     if (!state) {
         return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
     }
-    res.json(population);}
+    res.json(population);
 };
 
 const getAdmission = (req, res) => {
-    if(verifyStates(req.params.state) == false){
-        res.json({"message": 'Invalid state abbreviation parameter'});
-    }else{
+    
     const state = data.states.find(state => state.code === req.params.state.toUpperCase() );
     const population = {'state': state.state, 'admitted': state.admission_date};
     if (!state) {
         return res.status(400).json({ "message": `State Code ${req.params.state} not found` });
     }
     res.json(population);
-}
+
 };
 
 const deleteFunfact = (req, res) => {
