@@ -24,7 +24,7 @@ const getAllStates = async (req, res) => {
             if(data.states[i].code == "OK" || data.states[i].code == "KS" || data.states[i].code == "MO" || data.states[i].code == "CO" || data.states[i].code == "NE"){
                 const stateFunFact = await Funfact.findOne({ stateCode: data.states[i].code }).exec()
                 const factAlone = stateFunFact.funFact;
-                data.states[i].funfact = factAlone;
+                data.states[i].funfacts = factAlone;
             }
         }
         if(req.query.contig ===  "false"){
